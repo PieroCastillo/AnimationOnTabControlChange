@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AnimationOnTabControlChange.MainWindow"
+        Title="AnimationOnTabControlChange">
+  <Window.Styles>
+    <Style Selector="TabControl:normal /template/ ContentPresenter">
+      <Style.Animations>
+        <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseOut">
+          <KeyFrame Cue="0%">
+            <Setter Property="TranslateTransform.X" Value="100" />
+            <Setter Property="Opacity" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="TranslateTransform.X" Value="0" />
+            <Setter Property="Opacity" Value="1" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
+  </Window.Styles>
+  
+  <AnimateTabControl>
+    <TabItem Header="Header 1" Content="Content 1"/>
+    <TabItem Header="Header 2" Content="Content 2"/>
+    <TabItem Header="Header 3" Content="Content 3"/>
+    <TabItem Header="Header 4" Content="Content 4"/>
+  </AnimateTabControl>
+</Window>
