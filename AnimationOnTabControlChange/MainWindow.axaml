@@ -22,7 +22,7 @@
     </Style>
   </Window.Styles>
   
-  <AnimateTabControl>
+  <AnimateTabControl SkipInitialAnimation="False">
     <TabItem Header="Header 1" Content="Content 1"/>
     <TabItem Header="Header 2" Content="Content 2"/>
     <TabItem Header="Header 3" Content="Content 3"/>

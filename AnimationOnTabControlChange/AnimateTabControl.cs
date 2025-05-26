@@ -12,8 +12,13 @@ namespace AnimationOnTabControlChange
 
 		public AnimateTabControl()
 		{
-			PseudoClasses.Add(":normal");
-			SelectionChanged += OnContentChanged;
+			if (!SkipInitialAnimation)
+				AttachedToVisualTree += (_, _) => SelectionChanged += OnContentChanged;
+			else
+			{
+				PseudoClasses.Add(":normal");
+				SelectionChanged += OnContentChanged;
+			}
 		}
 
 		private void OnContentChanged(object? sender, SelectionChangedEventArgs e)
@@ -33,5 +38,22 @@ namespace AnimationOnTabControlChange
 
 		public static readonly StyledProperty<bool> AnimateOnChangeProperty =
 			AvaloniaProperty.Register<AnimateTabControl, bool>(nameof(AnimateOnChange), true);
+
+		/// <summary>
+		/// Identifies the SkipInitialAnimation property, which determines whether
+		/// the initial animation is skipped when the control is first displayed or attached to the visual tree.
+		/// </summary>
+		public static readonly StyledProperty<bool> SkipInitialAnimationProperty =
+			AvaloniaProperty.Register<AnimateTabControl, bool>(nameof(SkipInitialAnimation), true);
+
+		/// <summary>
+		/// Gets or sets a value indicating whether the initial animation should be skipped
+		/// when the control is first displayed or attached to the visual tree.
+		/// </summary>
+		public bool SkipInitialAnimation
+		{
+			get => GetValue(SkipInitialAnimationProperty);
+			set => SetValue(SkipInitialAnimationProperty, value);
+		}
 	}
 }
