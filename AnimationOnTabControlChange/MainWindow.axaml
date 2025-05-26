@@ -20,9 +20,23 @@
         </Animation>
       </Style.Animations>
     </Style>
+    <Style Selector="TabControl:reverse /template/ ContentPresenter">
+      <Style.Animations>
+        <Animation Duration="0:0:0.5" FillMode="Backward" Easing="CubicEaseOut">
+          <KeyFrame Cue="0%">
+            <Setter Property="TranslateTransform.X" Value="-100" />
+            <Setter Property="Opacity" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="TranslateTransform.X" Value="0" />
+            <Setter Property="Opacity" Value="1" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
+    </Style>
   </Window.Styles>
   
-  <AnimateTabControl>
+  <AnimateTabControl SkipInitialAnimation="True" AnimationType="DEFAULT">
     <TabItem Header="Header 1" Content="Content 1"/>
     <TabItem Header="Header 2" Content="Content 2"/>
     <TabItem Header="Header 3" Content="Content 3"/>
